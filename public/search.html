@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Mobil</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <section id="hero">
+      <nav class="navbar container">
+        <img
+          class="img-logo"
+          src="https://res.cloudinary.com/df9xffepp/image/upload/v1694182556/logo_dqinig.png"
+          alt="logo"
+        />
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link text-black" href="#">Our Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="#">Why Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="#">Testimonial</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="#">FAQ</a>
+          </li>
+          <button type="button" class="btn btn-success">Register</button>
+        </ul>
+      </nav>
+
+      <div class="hero-content container">
+        <div class="row">
+          <div class="col">
+            <h1>
+              Sewa & Rental Mobil Terbaik di <br />
+              kawasan (Lokasimu)
+            </h1>
+            <p>
+              Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas <br />
+              terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu <br />
+              untuk sewa mobil selama 24 jam.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <img
+              class="car-img"
+              src="https://res.cloudinary.com/df9xffepp/image/upload/v1694182556/img_car_encm3l.png"
+              alt="car_img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cari_mobil">
+      <div class="container">
+        <div class="position-absolute start-50 translate-middle">
+          <div class="card" style="width: 1200px">
+            <div class="card-body shadow">
+              <form>
+                <div class="row">
+                  <div class="col">
+                    <label for="exampleTipeDriver" class="form-label">Tipe Driver</label>
+                    <select class="form-select" aria-label="Default select example" id="exampleDriverType" required>
+                      <option selected>Pilih Tipe Driver</option>
+                      <option value="True">Dengan Sopir</option>
+                      <option value="False">Tanpa Sopir (Lepas Kunci)</option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <label for="exampleTanggal" class="form-label">Tanggal</label>
+                    <input type="date" class="form-control" id="ExampleDate" required />
+                  </div>
+                  <div class="col">
+                    <label for="exampleWaktu" class="form-label">Waktu Jemput/Ambil</label>
+                    <select
+                      class="form-select icon-rtl"
+                      aria-label="Default select example"
+                      id="exampleWaktuJemput"
+                      required
+                    >
+                      <option selected>Pilih Waktu</option>
+                      <option value="08:00">08:00 WIB</option>
+                      <option value="09:00">09:00 WIB</option>
+                      <option value="10:00">10:00 WIB</option>
+                      <option value="11:00">11:00 WIB</option>
+                      <option value="12:00">12:00 WIB</option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <label for="exampleJumlahPenumpang" class="form-label">Jumlah Penumpang (optional)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="exampleJumlahPenumpang"
+                      placeholder="Jumlah Penumpang"
+                    />
+                  </div>
+                  <div class="col" style="margin-top: 2rem">
+                    <button id="btn-search" class="btn btn-success w-100" type="submit">Cari Mobil</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cars" id="root"></section>
+
+    <section class="col-lg-4 m-auto mt-5 warning visually-hidden">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <span class="fw-bold">Cars Not Found!</span> Try other keywords
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </section>
+
+    <footer id="footer">
+      <div class="footer-content container" style="margin-top: 7rem">
+        <div class="row align-items-start">
+          <div class="info col">
+            <p>Jalan Suroyo No. 161 Mayangan Kota <br />Probolonggo 672000</p>
+            <p>binarcarrental@gmail.com</p>
+            <p>081-233-334-808</p>
+          </div>
+          <div class="navigation col">
+            <a class="nav nav-link text-black" href="#">Our Services</a>
+            <a class="nav nav-link text-black" href="#">Why Us</a>
+            <a class="nav nav-link text-black" href="#">Testimonial</a>
+            <a class="nav nav-link text-black" href="#">FAQ</a>
+          </div>
+          <div class="sosmed col">
+            <p>Connect with us</p>
+            <button class="sosmed-img" type="button">
+              <img src="https://res.cloudinary.com/df9xffepp/image/upload/v1694183934/list_item_iqaesc.png" alt="" />
+            </button>
+          </div>
+          <div class="copyright col">
+            <p>Copyright Binar 2022</p>
+            <img src="https://res.cloudinary.com/df9xffepp/image/upload/v1694182556/logo_dqinig.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="./scripts/binar.js"></script>
+    <script type="text/javascript" src="./scripts/component.js"></script>
+    <script type="text/javascript" src="./scripts/car.js"></script>
+    <script type="text/javascript" src="./scripts/main.js"></script>
+  </body>
+</html>
