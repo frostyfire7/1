@@ -1,41 +1,24 @@
-const http = require("http");
-const { PORT = 8001 } = process.env;
-const hostName = "localhost";
-const fs = require("fs");
-const url = require("url");
+const express = require("express");
 const path = require("path");
-const mime = require("mime-types");
+const dir = path.resolve();
+const staticFilePath = path.join(dir, "public");
+const PORT = process.env.PORT || 8000;
+const app = express();
 
-const PUBLIC_DIRECTORY = path.join(__dirname, "../public/");
+app.use(express.static(staticFilePath));
 
-const onRequest = (req, res) => {
-  let parsedURL = url.parse(req.url, true);
+app.get("/", (req, res) => {
+  res.status(200).sendFile(path.join(staticFilePath, "index.html"));
+});
 
-  let path = parsedURL.path.replace(/^\/+|\/+$/g, "");
+app.get("/cars", (req, res) => {
+  res.status(200).sendFile(path.join(staticFilePath, "search.html"));
+});
 
-  if (path == "") {
-    path = "index.html";
-  } else if (path == "search") {
-    path = "search.html";
-  }
+app.get("/*", (req, res) => {
+  res.status(404).sendFile(path.join(staticFilePath, "not_found.html"));
+});
 
-  let file = PUBLIC_DIRECTORY + path;
-  fs.readFile(file, function (err, content) {
-    if (err) {
-      console.log(`File Not Found ${file}`);
-      res.writeHead(404);
-      res.end();
-    } else {
-      // content response
-      console.log(`Returning ${path}`);
-      res.setHeader("X-Content-Type-Options", "nosniff");
-      let type = mime.lookup(path);
-      res.writeHead(200, { "Content-type": type });
-      res.end(content);
-    }
-  });
-};
-
-http.createServer(onRequest).listen(PORT, () => {
-  console.log(`Server listen on ${hostName}:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server Listen on port http://localhost:${PORT}`);
 });
